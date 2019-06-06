@@ -83,14 +83,27 @@ public class PiController implements PiMessageListener
             byte[] data = new byte[16];
             ByteBuffer byteBuffer = ByteBuffer.wrap(data).order(SERVER_ENDIAN);
 
-		 char temp_ch = msg.charAt(0);
+            String [] StrMsgArray = msg.split(",");
+		    char temp_ch = msg.charAt(0);
+		    String temp_str = StrMsgArray[1];
+		    if (temp_ch < 'a' || temp_ch > 'z'){
+		        System.out.println("Character error, defaulting to n");
+		        temp_ch = 'n';
+            }
+		    if (temp_str.length() > 7){
+		        System.out.println("String error, defaulting to NA");
+		        temp_str = "NA";
+            }
+            System.out.println(temp_ch);
+            System.out.println(temp_str);
 
             int num1 = 72;
             float num2 = 3.14f;
             char ch = temp_ch;
-		 //char ch = 't';
+            //char ch = 't';
             boolean bool = true;
-            String str = "hello";
+            String str = temp_str;
+            //String str = "hello";
 
             byte[] strBytes = str.getBytes();
 

@@ -32,6 +32,19 @@ public class Main
                     {
                         break;
                     }
+
+                    /*if (currentLine.equals("v")){
+                        System.out.println("running video server");
+                        Runtime runTime = Runtime.getRuntime();
+                        Process process = runTime.exec("python PiVideoServer.py");
+                        try {
+                            Thread.sleep(30000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        System.out.println("Closing video server");
+                        process.destroy();
+                    }*/
                 }
             }
             catch (IOException e)
