@@ -138,7 +138,8 @@ class PiClient:
 			self._sentPackets.append(info)
 
 		if PiClient._DEBUG:
-			print('<- {:15}\tMy ID:\t{}\tTime:\t{:8.3f} s'.format(command.name, packetNum, currentTime - self._startTime))
+                        #print("")
+                        print('<- {:15}\tMy ID:\t{}\tTime:\t{:8.3f} s'.format(command.name, packetNum, currentTime - self._startTime))
 
 		self._nextPacketNum += 1
 
@@ -220,12 +221,14 @@ class PiClient:
 
 		if command == PiNetworkCommand.HEARTBEAT:
 			if PiClient._DEBUG:
-				print('-> {:15}\tPC ID:\t{}\tTime:\t{:8.3f} s'.format(command.name, packetNum, currentTime - self._startTime))
+                                #print("")
+                                print('-> {:15}\tPC ID:\t{}\tTime:\t{:8.3f} s'.format(command.name, packetNum, currentTime - self._startTime))
 
 			self._heartbeatReceiveTime = time.time()
 		elif command == PiNetworkCommand.SHUTDOWN:
 			if PiClient._DEBUG:
-				print('-> {:15}\tPC ID:\t{}\tTime:\t{:8.3f} s'.format(command.name, packetNum, currentTime - self._startTime))
+                                #print("")
+                                print('-> {:15}\tPC ID:\t{}\tTime:\t{:8.3f} s'.format(command.name, packetNum, currentTime - self._startTime))
 
 			print('Server is shutting down.')
 
@@ -233,7 +236,8 @@ class PiClient:
 			self._heartbeatReceiveTime = 0
 		elif command == PiNetworkCommand.ACK:
 			if PiClient._DEBUG:
-				print('-> {:15}\tMy ID:\t{}\tTime:\t{:8.3f} s'.format(command.name, packetNum, currentTime - self._startTime), end='')
+                                #print("")
+                                print('-> {:15}\tMy ID:\t{}\tTime:\t{:8.3f} s'.format(command.name, packetNum, currentTime - self._startTime), end='')
 
 			for info in self._sentPackets:
 				if info.packetNum == packetNum:
@@ -248,12 +252,14 @@ class PiClient:
 				print()
 		elif command == PiNetworkCommand.USER_MESSAGE:
 			if PiClient._DEBUG:
-				print('-> {:15}\tPC ID:\t{}\tTime:\t{:8.3f} s'.format(command.name, packetNum, currentTime - self._startTime))
+                                #print("")
+                                print('-> {:15}\tPC ID:\t{}\tTime:\t{:8.3f} s'.format(command.name, packetNum, currentTime - self._startTime))
 
 			ackMsg = struct.pack(('>' if self._endian == 'BIG' else '<') + 'iii', packetNum, self._botID, PiNetworkCommand.ACK.value)
 
 			if PiClient._DEBUG:
-				print('<- {:15}\tPC ID:\t{}\tTime:\t{:8.3f} s'.format(PiNetworkCommand.ACK.name, packetNum, currentTime - self._startTime))
+                                #print("")
+                                print('<- {:15}\tPC ID:\t{}\tTime:\t{:8.3f} s'.format(PiNetworkCommand.ACK.name, packetNum, currentTime - self._startTime))
 
 			self._clientSocket.sendto(ackMsg, (self._serverIP, self._serverPort))
 

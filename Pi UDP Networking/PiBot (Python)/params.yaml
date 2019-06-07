@@ -1,0 +1,27 @@
+%YAML:1.0
+---
+format: 3
+thresholdStep: 100.
+minThreshold: 30.
+maxThreshold: 231.
+minRepeatability: 1
+minDistBetweenBlobs: 10.
+filterByColor: 1
+blobColor: 255
+filterByArea: 1
+minArea: 100.
+maxArea: 150000.
+filterByCircularity: 1
+minCircularity: 0.0
+maxCircularity: 1.
+filterByInertia: 1
+minInertiaRatio: 0.0
+maxInertiaRatio: 1.
+filterByConvexity: 1
+minConvexity: 0.0
+maxConvexity: 1.
+
+# See https://www.learnopencv.com/blob-detection-using-opencv-python-c/
+# for an explanation on modifying these parameters.
+# Unlike the tutorial, these parameters are being saved to a (yaml) file,
+# so the syntax is different but the concepts are still the same.
